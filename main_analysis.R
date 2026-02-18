@@ -2,6 +2,12 @@
 library(rstan)
 library(here)
 
+if (!require("bayesplot")) install.packages("bayesplot")
+library(bayesplot)
+
+if (!require("ggplot2")) install.packages("ggplot2")
+library(ggplot2)
+
 # main_analysis.R 상단에 추가 (멀티코어 수술 지원)
 options(mc.cores = parallel::detectCores()) # CPU 코어를 모두 사용합니다.
 rstan_options(auto_write = TRUE)            # 바뀐 게 없다면 재컴파일을 건너뜁니다.
@@ -55,7 +61,7 @@ target_names <- c("T1_Concave", "T1_Convex", "T2_Concave", "T2_Convex",
                   "T3_Concave", "T3_Convex", "T4_Concave", "T4_Convex", 
                   "T5_Concave", "T5_Convex", "T6_Concave", "T6_Convex")
 colnames(posterior)[1:12] <- target_names
-posterior[1:6, 1:5]
+posterior[1:6, 1:6]
 
 # 밀도 그래프 출력
 mcmc_areas(posterior, pars = target_names, prob = 0.95) +
