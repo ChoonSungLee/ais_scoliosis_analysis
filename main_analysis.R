@@ -43,6 +43,8 @@ print(head(sorted_summary, 10)) # 너무 기니까 상위 10개만 먼저 봅니
 # 2. 행 이름(rownames) 중에 "mu["가 포함된 것만 필터링합니다.
 mu_summary <- summary_fit[grep("mu\\[", rownames(summary_fit)), ]
 
+prob_summary <- summary_fit[grep("mu_prob", rownames(summary_fit)), ]
+
 # 3. 골라낸 mu들만 다시 평균 순으로 정렬합니다.
 sorted_mu <- mu_summary[order(mu_summary[, "mean"]), c("mean", "sd", "2.5%", "97.5%")]
 
