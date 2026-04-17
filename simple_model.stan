@@ -37,7 +37,7 @@ generated quantities {
     }
   }
 
-// 2. 전체 데이터에 대한 사후 예측 (모델 검증용)
+ // 2. 전체 데이터에 대한 사후 예측 (모델 검증용)
   array[N] real y_rep;
   for (n in 1:N) {
     y_rep[n] = normal_rng(mu[vertebra_level_numeric[n], side_numeric[n]], sigma);
