@@ -7,7 +7,7 @@
 data {
   int<lower=0> N;
   array[N] int<lower=1, upper=6> vertebra_level_numeric;
-  array[N] int<lower=1, upper=2> side_numeric; // 1: Concave, 2: Convex
+  array[N] int<lower=1, upper=2> side_numeric; // 1: Left, 2: Right
   array[N] real width; // 척추경의 절대 넓이 (mm)
 }
 
@@ -31,9 +31,9 @@ generated quantities {
   matrix[6, 2] mu_prob_narrow; 
   for (k in 1:6) {
     for (s in 1:2) {
-     // 각 레벨의 각 측면 평균이 3mm 미만일 확률 (지표 변수)
+     // 각 레벨의 각 측면 평균이 2mm 미만일 확률 (지표 변수)
     // 3mm는 나사가 들어갈 수 있는 최소한의 안전 마진 예시입니다. 
-      mu_prob_narrow[k, s] = (mu[k, s] < 3.0); 
+      mu_prob_narrow[k, s] = (mu[k, s] < 2.0); 
     }
   }
 
@@ -43,6 +43,8 @@ generated quantities {
     y_rep[n] = normal_rng(mu[vertebra_level_numeric[n], side_numeric[n]], sigma);
   }
 }
+
+
 
 
 

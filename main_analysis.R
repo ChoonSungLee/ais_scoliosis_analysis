@@ -50,7 +50,7 @@ sorted_mu <- mu_summary[order(mu_summary[, "mean"]), c("mean", "sd", "2.5%", "97
 print("=== 2. 핵심 마디(mu)만 정렬 (교수님 맞춤형) ===")
 print(sorted_mu)
 
-# --- 5. 시각화 (LA 아침의 선물 세트) ---
+# --- 5. 시각화 ---
 library(bayesplot)
 library(ggplot2)
 
