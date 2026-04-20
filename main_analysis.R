@@ -27,6 +27,7 @@ print(fit, pars = c("mu")) # 평균값 추정치 확인
 
 # 4. 시각화 (사후분포 그래프) 
 plot(fit, show_density = TRUE, pars = "mu")
+plot(fit, pars="mu[3,2]", plotfun="hist") 
 
 # main_analysis.R 의 마지막 부분에 추가
 # --- 4. 통계 결과 요약 및 정렬 (기존 코드) ---
